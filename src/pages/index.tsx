@@ -1,32 +1,24 @@
-import Image from "next/image";
-import { Poppins } from "next/font/google";
 import Button from "@/components/Button";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-poppins",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
+import Typography from "@/components/Typography";
 
 export default function Home() {
   return (
-    <main className={`${poppins.variable}`}>
-      <div
-        style={{
-          width: "100%",
-          height: "100vh",
-          backgroundColor: "#F3F8FC",
-        }}
-      >
-        <Button
-          variant="primary"
-          label="Get Started"
-          onClick={() => {}}
-          size="small"
-          disabled={false}
-        />
+    <div className="home">
+      <div className="principalcontainer">
+        <div className="infocontainer">
+          <Typography size="caption" weight="bold" text="undefined" />
+
+          <Typography size="caption" weight="bold" text="undefined" />
+
+          <div className="buttoncontainer">
+            <Button variant="primary" size="large" label="undefined" />
+
+            <Button variant="secondary" size="large" label="undefined" />
+          </div>
+        </div>
       </div>
-    </main>
+
+      <div className="logincontainer"></div>
+    </div>
   );
 }

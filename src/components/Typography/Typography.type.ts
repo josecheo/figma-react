@@ -1,4 +1,4 @@
-export interface InputProps {
+export interface TypographyProps {
   size:
     | "headline"
     | "subheadline"

@@ -1,24 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import '../utils/tailwind.css';
 
-import Button from "../components/Button";
+import Typography from "../components/Typography";
 type Story = StoryObj<typeof meta>;
 
 const meta = {
-  title: "Button",
-  component: Button,
+  title: "Typography",
+  component: Typography,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Typography>;
 export default meta;
 
 export const Primary: Story = {
   args: {
-    variant: "primary",
-    label: "Get Started",
+    text: "Get Started",
     size: "small",
-    disabled: false,
+    weight: "bold",
   },
 };
