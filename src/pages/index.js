@@ -4,35 +4,26 @@ import generateBaseCodeJSX from "../utils/generateJSXFromJSON";
 import generateCssFromJSON from "../utils/generateCssFromJSON";
 import { CopyBlock, atomOneDark, dracula } from "react-code-blocks";
 import { fetchFigma } from "../utils/fetchFigma";
+import DefaultAccordion from "../components/Accordion";
+import { Spinner } from "@material-tailwind/react";
+
 export default function Home() {
   const [fileID, setSileID] = useState("");
   const [document, setDocument] = useState(null);
   const [code, setCode] = useState("");
   const [codeCss, setCodeCss] = useState("");
-
-  // const fetchFigma = async () => {
-  //   var myHeaders = new Headers();
-  //   myHeaders.append(
-  //     "X-Figma-Token",
-  //     "figd_iSyLNucpeuOk4N-SreeMSbR4U4lhPQyb-Ew346kg"
-  //   );
-
-  //   var requestOptions = {
-  //     method: "GET",
-  //     headers: myHeaders,
-  //   };
-
-  //   fetch(`https://api.figma.com/v1/files/${fileID}`, requestOptions)
-  //     .then((response) => response.json())
-  //     .then((result) => handleResult(result))
-  //     .catch((error) => console.log("error", error));
-  // };
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleResult = async () => {
+    setIsLoading(true);
+    setDocument(null);
+    setCodeCss("");
+    setCode("");
     const response = await fetchFigma(fileID);
     if (response) {
       const { document: documentApi } = response;
       setDocument(documentApi);
+      setIsLoading(false);
     }
   };
 
@@ -69,46 +60,37 @@ export default function Home() {
               <button
                 type="submit"
                 onClick={() => handleResult()}
-                className="mt-3 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                disabled={isLoading}
+                className="mt-3 rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 w-[100%]"
               >
-                Fetch
+                {isLoading ? "Cargando..." : "Cargar data"}
               </button>
             </div>
           </div>
-          <div className="flex-col space-y-4">
-            {document &&
-              document.children.map((page) => {
-                console.log("page", page);
-                return (
-                  <>
-                    {page.name === "Pantallas" && (
-                      <div key={page.id}>
-                        <div className="cursor-pointer w-[21rem] rounded-lg bg-white p-4 text-[0.8125rem] leading-5 shadow-xl shadow-black/5 hover:bg-slate-50 ring-2 ring-indigo-600">
-                          <div className="font-medium text-slate-900">
-                            {page.name}
-                          </div>
-                        </div>
-                        <div className="flex-col space-y-2 mt-2 ml-4">
-                          {page.children.map((frame) => {
-                            return (
-                              <div
-                                onClick={() => getCodeByFrame(frame)}
-                                key={frame.id}
-                                className="font-medium text-slate-900 cursor-pointer w-[20rem] rounded-lg  p-2 leading-5 shadow-xl shadow-black/5 hover:bg-slate-50 ring-2 bg-gray-100 ring-gray-300"
-                              >
-                                {frame.name}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
-                  </>
-                );
-              })}
-          </div>
+
+          {/* pantallas */}
+          {isLoading ? (
+            <Spinner className="h-16 w-16 " color="blue" />
+          ) : (
+            <div className="flex-col space-y-4">
+              {document &&
+                document.children.map((page) => {
+                  return (
+                    page.name === "Pantallas" && (
+                      <DefaultAccordion
+                        title={page.name}
+                        content={page.children}
+                        getCodeByFrame={getCodeByFrame}
+                      />
+                    )
+                  );
+                })}
+            </div>
+          )}
         </div>
       </div>
+
+      {/* codigo */}
       {code && codeCss && (
         <div className="flex gap-4">
           <div className="flex flex-col w-[500px] min-h-[300px] max-h-[600px] overflow-auto">
