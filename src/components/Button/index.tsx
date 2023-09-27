@@ -9,11 +9,11 @@ const getButtonClasses = (
 
   let sizeClasses = "";
   if (size === "small") {
-    sizeClasses = "min-w-[118px] h-[28px] px-[12px] py-[4px] text-base font-normal";
+    sizeClasses = "w-[100%] min-w-[118px] h-[28px] px-[12px] py-[4px] text-base font-normal";
   } else if (size === "medium") {
-    sizeClasses = "min-w-[160px] h-[40px] px-[28px] py-[8px] text-base font-normal";
+    sizeClasses = "w-[100%] min-w-[160px] h-[40px] px-[28px] py-[8px] text-base font-normal";
   } else {
-    sizeClasses = "min-w-[215px] h-[48px] px-[52px] py-[12px] text-lg font-normal";
+    sizeClasses = "w-[100%] min-w-[215px] h-[48px] px-[52px] py-[12px] text-lg font-normal";
   }
 
   if (variant === "primary") {
@@ -29,7 +29,6 @@ const getButtonClasses = (
 
 const Button = ({ label, onClick, size, variant, disabled }: ButtonProps) => {
   const buttonClasses = getButtonClasses(variant, size, disabled);
-console.log("buttonClasses",buttonClasses)
   return (
     <button className={buttonClasses} onClick={onClick} disabled={disabled}>
       {label}

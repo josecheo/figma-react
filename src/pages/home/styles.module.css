@@ -1,0 +1,130 @@
+.register {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: auto;
+  min-width: auto;
+  min-height: auto;
+  flex: 0 1 auto;
+  padding: 60px 60px 60px 60px;
+  background: rgba(255, 255, 255, 1);
+  gap: 0px;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  flex-wrap: wrap;
+}
+
+.registercontainer {
+  display: flex;
+  flex-direction: row;
+  width: 577px;
+  height: 750px;
+  min-width: 500px;
+  min-height: 750px;
+  flex: 0 1 auto;
+  padding: 20px 20px 20px 20px;
+  gap: 0px;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  flex-wrap: wrap;
+}
+
+.formcontainer {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  min-width: auto;
+  min-height: auto;
+  flex: 1;
+  padding: 30px 30px 30px 30px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 1);
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  flex-wrap: nowrap;
+}
+
+.buttoncontainer {
+  display: flex;
+  flex-direction: row;
+  width: 233px;
+  height: 48px;
+  min-width: auto;
+  min-height: auto;
+  flex: 0 1 auto;
+  padding: 0px 0px 0px 0px;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+  flex-wrap: wrap;
+}
+
+.registerbycontainer {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  min-width: auto;
+  min-height: auto;
+  flex: 0 1 auto;
+  padding: 0px 0px 0px 0px;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  flex-wrap: nowrap;
+}
+
+.containerinfo {
+  display: flex;
+  flex-direction: row;
+  width: 560px;
+  height: 750px;
+  min-width: 500px;
+  min-height: 750px;
+  flex: 0 1 auto;
+  padding: 20px 20px 20px 20px;
+  gap: 0px;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  flex-wrap: wrap;
+}
+
+.infocontainer {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 710px;
+  min-width: auto;
+  min-height: auto;
+  flex: 1;
+  padding: 0px 0px 0px 0px;
+  gap: 28px;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  flex-wrap: nowrap;
+}
+
+.titlecontainer {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 159px;
+  min-width: auto;
+  min-height: auto;
+  flex: 0 1 auto;
+  padding: 0px 0px 0px 0px;
+  gap: 0px;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  flex-wrap: nowrap;
+}

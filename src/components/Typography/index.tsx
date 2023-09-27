@@ -12,7 +12,7 @@ const sizeVariants = {
   small: "text-small",
   tiny: "text-tiny",
   micro: "text-micro",
-}  
+};
 
 const weightVariants = {
   extraLight: "font-extraLight",
@@ -21,12 +21,23 @@ const weightVariants = {
   medium: "font-medium",
   semibold: "font-semibold",
   bold: "font-bold",
-} 
+};
 
-const Typography = ({ size, weight, text }: TypographyProps) => {
+const textColor = {
+  black: "text-black",
+  white: "text-white",
+  primary: "text-[#7B61FF]",
+  secondary:"text-[#9747FF]",
+}
 
+
+const Typography = ({ size, weight, text, maxWidth, color }: TypographyProps) => {
   return (
-    <div className={`${sizeVariants[size]} ${weightVariants[weight]}`}>{text}</div>
+    <div
+      className={`${sizeVariants[size]} ${weightVariants[weight]} max-w-[${maxWidth}] ${textColor[color]} `}
+    >
+      {text}
+    </div>
   );
 };
 export default Typography;
