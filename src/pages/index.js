@@ -30,6 +30,7 @@ export default function Home() {
   const getCodeByFrame = async (frame) => {
     const resutlJsx = generateBaseCodeJSX(frame);
     const resutlCss = generateCssFromJSON(frame);
+
     setCode(resutlJsx);
     setCodeCss(resutlCss);
   };

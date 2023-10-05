@@ -1,32 +1,60 @@
+import getFill from "./getStyles/getFill";
+import { getSize, getMinMax } from "./getStyles/getSize";
+import {
+  getFlexWrap,
+  getJustifyContent,
+  getAlignItems,
+} from "./getStyles/getLayout";
+
 function mapFigmaStylesToFigma(selection) {
+  const {
+    fills,
+    layoutSizingHorizontal,
+    layoutSizingVertical,
+    absoluteBoundingBox,
+    clipsContent,
+    minWidth,
+    minHeight,
+    maxHeight,
+    maxWidth,
+    layoutMode,
+    layoutGrow,
+    layoutWrap,
+    primaryAxisAlignItems,
+    counterAxisAlignItems,
+  } = selection;
+  const { width, height } = absoluteBoundingBox;
+
   console.log("selection", selection);
   const styles = {
     display: "flex",
-    "flex-direction": selection.layoutMode === "HORIZONTAL" ? "row" : "column",
-    width:
-      selection.layoutSizingHorizontal === "FIXED"
-        ? `${selection.absoluteBoundingBox.width}px`
-        : mapFigmaSize(selection.width),
-    height:
-      selection.layoutSizingVertical === "FIXED"
-        ? `${selection.absoluteBoundingBox.height}px`
-        : mapFigmaSize(selection.height),
-    "min-width": mapFigmaSize(selection.minWidth),
-    "min-height": mapFigmaSize(selection.minHeight),
-    flex: selection.layoutGrow ? selection.layoutGrow : "0 1 auto",
-    padding: mapFigmaPadding(
-      selection.paddingTop,
-      selection.paddingRight,
-      selection.paddingBottom,
-      selection.paddingLeft
-    ),
-    "border-radius": getBorderRadius(selection),
-    background: getColorRGBA(selection.background),
-    gap: selection.itemSpacing ? `${selection.itemSpacing}px` : "0px",
-    "justify-content": mapFigmaJustifyContent(selection.primaryAxisAlignItems),
-    "align-items": mapFigmaAlignItems(selection.counterAxisAlignItems),
-    "align-content": mapFigmaAlignContent(selection.counterAxisAlignContent),
-    "flex-wrap": selection.layoutMode === "HORIZONTAL" ? "wrap" : "nowrap",
+    background: getFill(fills),
+    width: getSize(layoutSizingHorizontal, width),
+    height: getSize(layoutSizingVertical, height),
+    overflow: clipsContent ? "hidden" : null,
+    "min-width": getMinMax(minWidth),
+    "min-height": getMinMax(minHeight),
+    "max-width": getMinMax(maxWidth),
+    "max-height": getMinMax(maxHeight),
+    "flex-direction": layoutMode === "VERTICAL" ? "column" : null,
+    "justify-content": getJustifyContent(primaryAxisAlignItems),
+    "align-items": getAlignItems(counterAxisAlignItems),
+    // flex: layoutGrow ? layoutGrow : "0 1 auto",
+    "flex-wrap": getFlexWrap(layoutWrap),
+    // flex: selection.layoutGrow ? selection.layoutGrow : "0 1 auto",
+    // padding: mapFigmaPadding(
+    //   selection.paddingTop,
+    //   selection.paddingRight,
+    //   selection.paddingBottom,
+    //   selection.paddingLeft
+    // ),
+    // "border-radius": getBorderRadius(selection),
+
+    // gap: selection.itemSpacing ? `${selection.itemSpacing}px` : "0px",
+    // "justify-content": mapFigmaJustifyContent(selection.primaryAxisAlignItems),
+    // "align-items": mapFigmaAlignItems(selection.counterAxisAlignItems),
+    // "align-content": mapFigmaAlignContent(selection.counterAxisAlignContent),
+    // "flex-wrap": selection.layoutMode === "HORIZONTAL" ? "wrap" : "nowrap",
   };
 
   for (const key in styles) {
@@ -44,17 +72,8 @@ const getBorderRadius = (selection) => {
     const [topLeft, topRight, bottomRight, bottomLeft] =
       selection.rectangleCornerRadii;
     return `${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px`;
-  }else {
+  } else {
     return undefined;
-  }
-};
-
-const getColorRGBA = (background) => {
-  if (background.length) {
-    const color = background[0].color;
-    return `rgba(${color.r * 255}, ${color.g * 255}, ${color.b * 255}, ${
-      color.a
-    })`;
   }
 };
 

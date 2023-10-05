@@ -1,0 +1,82 @@
+.test {
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  width: 1198px;
+  height: 600px;
+  min-height: 600px;
+  justify-content: center;
+  align-items: center;
+}
+
+.rectangle {
+  display: flex;
+  background: rgba(248, 101, 101, 1);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.frame1 {
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  width: 200px;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frame2 {
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  width: 200px;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frame3 {
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  width: 200px;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frame4 {
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  width: 200px;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frame5 {
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  width: 200px;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frame6 {
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  width: 200px;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frame7 {
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  width: 200px;
+  height: 200px;
+  flex-direction: column;
+  align-items: center;
+}

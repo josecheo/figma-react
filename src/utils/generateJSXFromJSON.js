@@ -61,7 +61,6 @@ export function generateJSXFromJSON(node) {
 ${node.children.map((child) => generateJSXFromJSON(child)).join("")}
 </div>`;
     }
-    // console.log("node", node);
     if (node.type === "INSTANCE") {
       if (node.name === "Button") {
         let code = getButtonCode(node);

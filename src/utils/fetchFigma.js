@@ -3,7 +3,7 @@ export const fetchFigma = async (fileID) => {
   var myHeaders = new Headers();
   myHeaders.append(
     "X-Figma-Token",
-    "figd_iSyLNucpeuOk4N-SreeMSbR4U4lhPQyb-Ew346kg"
+    "figd_AnOp6zv6cDBlImEnFkT-AYrWIo78jihkZUwAz_VH"
   );
 
   var requestOptions = {
